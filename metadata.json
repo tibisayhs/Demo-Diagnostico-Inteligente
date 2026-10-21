@@ -1,0 +1,6 @@
+{
+  "name": "Diagnóstico Inteligente de Negocios",
+  "description": "Evalúa el nivel de preparación digital de tu negocio y descubre oportunidades de crecimiento con tecnología e inteligencia artificial. Por Tiby Hernández.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
