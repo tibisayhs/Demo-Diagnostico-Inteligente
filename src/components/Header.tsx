@@ -35,6 +35,18 @@ export const Header: React.FC<HeaderProps> = ({ currentScreen, onReset, onGoHome
 
         {/* Right side controls */}
         <div className="flex items-center gap-2 sm:gap-3">
+          {/* Botón directo de descarga de código ZIP */}
+          <a
+            href="/diagnostico-inteligente-negocios.zip"
+            target="_blank"
+            rel="noopener noreferrer"
+            download="diagnostico-inteligente-negocios.zip"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#C1FF72] hover:bg-[#b0f25e] text-[#020202] font-bold text-xs shadow-sm transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF751F]"
+            title="Descargar todos los archivos y carpetas en un archivo ZIP"
+          >
+            <span>⬇️ Descargar ZIP</span>
+          </a>
+
           {isStarted && (
             <button
               onClick={onReset}

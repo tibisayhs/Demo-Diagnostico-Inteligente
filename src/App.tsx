@@ -17,13 +17,15 @@ import { ScreenCuestionario } from './components/ScreenCuestionario';
 import { ScreenResultados } from './components/ScreenResultados';
 import { ScreenRecomendaciones } from './components/ScreenRecomendaciones';
 import { ScreenProximoPaso } from './components/ScreenProximoPaso';
-import { PlayCircle, CheckCircle, RefreshCw } from 'lucide-react';
+import { FileTreeModal } from './components/FileTreeModal';
+import { PlayCircle, CheckCircle, RefreshCw, FolderTree, Download } from 'lucide-react';
 
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState<Screen>('inicio');
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
   const [answers, setAnswers] = useState<UserAnswers>({});
   const [showWorkshopPanel, setShowWorkshopPanel] = useState<boolean>(false);
+  const [showFileTreeModal, setShowFileTreeModal] = useState<boolean>(false);
 
   // Handlers for questionnaire
   const handleStart = () => {
@@ -143,16 +145,30 @@ export default function App() {
             <span>Tiby Hernández</span>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+            <button
+              onClick={() => setShowFileTreeModal(true)}
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/5 hover:bg-black/10 text-[#020202] font-semibold text-[11px] transition-all"
+            >
+              <FolderTree className="w-3.5 h-3.5 text-[#020202]" />
+              <span>Ver Carpetas y Archivos</span>
+            </button>
+
             <button
               onClick={() => setShowWorkshopPanel(!showWorkshopPanel)}
               className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/5 hover:bg-black/10 text-[#020202] font-semibold text-[11px] transition-all"
             >
               <PlayCircle className="w-3.5 h-3.5 text-[#FF751F]" />
-              <span>{showWorkshopPanel ? 'Ocultar Casos de Prueba' : 'Casos de Prueba (Demo)'}</span>
+              <span>{showWorkshopPanel ? 'Ocultar Casos Demo' : 'Casos Demo'}</span>
             </button>
           </div>
         </div>
+
+        {/* Modal de Carpetas y Descarga */}
+        <FileTreeModal
+          isOpen={showFileTreeModal}
+          onClose={() => setShowFileTreeModal(false)}
+        />
 
         {/* Live Workshop testing panel */}
         {showWorkshopPanel && (
